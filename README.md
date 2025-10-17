@@ -604,9 +604,20 @@ tflint
 
 ---
 
+## 👤 Author
+
+**Adrian Johnson**
+- Email: [adrian207@gmail.com](mailto:adrian207@gmail.com)
+- GitHub: [@adrian207](https://github.com/adrian207)
+- Repository: [azure-sql-docker-demos](https://github.com/adrian207/azure-sql-docker-demos)
+
+---
+
 ## 📜 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+Copyright (c) 2025 Adrian Johnson
 
 ---
 
@@ -625,6 +636,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **GitHub Issues**: [Report bugs or request features](https://github.com/adrian207/azure-sql-docker-demos/issues)
 - **Discussions**: [Ask questions and share ideas](https://github.com/adrian207/azure-sql-docker-demos/discussions)
+- **Email**: [adrian207@gmail.com](mailto:adrian207@gmail.com)
 - **SQL Server Documentation**: [Microsoft Learn](https://learn.microsoft.com/en-us/sql/)
 - **Azure Support**: [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade)
 
@@ -636,7 +648,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 [View on GitHub](https://github.com/adrian207/azure-sql-docker-demos) • [Report Issue](https://github.com/adrian207/azure-sql-docker-demos/issues) • [Request Feature](https://github.com/adrian207/azure-sql-docker-demos/issues/new)
 
-**Made by Adrian Johnson** | [GitHub Profile](https://github.com/adrian207)
+**Created and Maintained by Adrian Johnson**  
+📧 [adrian207@gmail.com](mailto:adrian207@gmail.com) | 💻 [@adrian207](https://github.com/adrian207)
 
 ⭐ **Star this repo if you find it helpful!** ⭐
 

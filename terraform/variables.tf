@@ -1,3 +1,7 @@
+# Azure SQL Server Docker Demos - Variables
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+
 variable "project_name" {
   description = "Project name used for resource naming"
   type        = string

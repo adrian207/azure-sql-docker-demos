@@ -1,3 +1,7 @@
+# Azure SQL Server Docker Demos - Windows VM Configuration
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+
 # Windows Server VM for SQL Server Management
 
 # Data disk for SQL Server data

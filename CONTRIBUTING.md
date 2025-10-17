@@ -159,10 +159,17 @@ Cost impact: None (Grafana already deployed)
 - Open an issue for questions
 - Tag with `question` label
 - Check existing discussions first
+- Email: [adrian207@gmail.com](mailto:adrian207@gmail.com)
 
 ## License
 
 By contributing, you agree that your contributions will be licensed under the MIT License.
+
+## 👤 Project Maintainer
+
+**Adrian Johnson**
+- Email: [adrian207@gmail.com](mailto:adrian207@gmail.com)
+- GitHub: [@adrian207](https://github.com/adrian207)
 
 Thank you for contributing! 🎉
 

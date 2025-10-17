@@ -1,3 +1,7 @@
+# Azure SQL Server Docker Demos - Network Configuration
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+
 # Virtual Network
 resource "azurerm_virtual_network" "main" {
   name                = "${var.project_name}-${var.environment}-vnet"

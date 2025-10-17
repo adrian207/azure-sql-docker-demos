@@ -1,3 +1,7 @@
+# Azure SQL Server Docker Demos - Outputs
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+
 # Network Outputs
 output "resource_group_name" {
   description = "Name of the resource group"

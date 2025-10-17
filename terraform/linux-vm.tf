@@ -1,3 +1,7 @@
+# Azure SQL Server Docker Demos - Linux VM Configuration
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+
 # Rocky Linux VM for SQL Server Containers
 
 # Data disk for Docker volumes

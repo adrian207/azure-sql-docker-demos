@@ -427,3 +427,13 @@ We implemented:
 
 **🎉 You now have a production-ready, multi-environment infrastructure!**
 
+---
+
+## 👤 Author
+
+**Adrian Johnson**
+- Email: [adrian207@gmail.com](mailto:adrian207@gmail.com)
+- GitHub: [@adrian207](https://github.com/adrian207)
+
+For questions, issues, or contributions, please open an issue on GitHub or contact via email.
+

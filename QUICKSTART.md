@@ -290,6 +290,15 @@ az group list --query "[?contains(name, 'sql-docker-demo')]"
 - **Documentation**: See [README.md](./README.md)
 - **Issues**: https://github.com/adrian207/azure-sql-docker-demos/issues
 - **Discussions**: https://github.com/adrian207/azure-sql-docker-demos/discussions
+- **Email**: [adrian207@gmail.com](mailto:adrian207@gmail.com)
+
+---
+
+## 👤 Author
+
+**Adrian Johnson**
+- Email: [adrian207@gmail.com](mailto:adrian207@gmail.com)
+- GitHub: [@adrian207](https://github.com/adrian207)
 
 ---
 

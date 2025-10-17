@@ -1,3 +1,8 @@
+# Azure SQL Server Docker Demos
+# Author: Adrian Johnson <adrian207@gmail.com>
+# GitHub: https://github.com/adrian207/azure-sql-docker-demos
+# License: MIT
+
 terraform {
   required_version = ">= 1.5.0"
 
