@@ -32,6 +32,11 @@ variable "admin_password" {
   description = "Admin password for Windows VM (min 12 chars, complex)"
   type        = string
   sensitive   = true
+  
+  validation {
+    condition     = length(var.admin_password) >= 12
+    error_message = "Password must be at least 12 characters long."
+  }
 }
 
 variable "ssh_public_key_path" {
@@ -98,9 +103,13 @@ variable "windows_subnet_prefix" {
 }
 
 variable "allowed_ip_ranges" {
-  description = "List of IP ranges allowed to access the environment (your public IP)"
+  description = "List of IP ranges allowed to access the environment (REQUIRED - get your IP: curl ifconfig.me)"
   type        = list(string)
-  default     = ["0.0.0.0/0"] # WARNING: Open to internet - restrict in production!
+  
+  validation {
+    condition     = length(var.allowed_ip_ranges) > 0 && !contains(var.allowed_ip_ranges, "0.0.0.0/0")
+    error_message = "ERROR: You must specify your IP address. Never use 0.0.0.0/0! Get your IP: curl ifconfig.me"
+  }
 }
 
 # SQL Server Configuration
@@ -108,6 +117,11 @@ variable "sql_sa_password" {
   description = "SQL Server SA password (min 8 chars, complex)"
   type        = string
   sensitive   = true
+  
+  validation {
+    condition     = length(var.sql_sa_password) >= 8
+    error_message = "SQL SA password must be at least 8 characters long."
+  }
 }
 
 variable "sql_server_edition" {
@@ -131,10 +145,15 @@ variable "enable_grafana" {
 
 # Guacamole Configuration
 variable "guacamole_admin_password" {
-  description = "Guacamole admin password"
+  description = "Guacamole admin password (REQUIRED - no default for security)"
   type        = string
   sensitive   = true
-  default     = "ChangeMe123!"
+  # NO DEFAULT - must be explicitly set
+  
+  validation {
+    condition     = length(var.guacamole_admin_password) >= 12
+    error_message = "Guacamole password must be at least 12 characters long."
+  }
 }
 
 # Tags
