@@ -1,0 +1,99 @@
+# Azure SQL Docker Demos - Terraform Variables Example
+# Copy this file to terraform.tfvars and customize for your environment
+
+#==============================================================================
+# REQUIRED VARIABLES - You must set these!
+#==============================================================================
+
+# Admin username for VMs (used for both Linux and Windows)
+admin_username = "sqladmin"
+
+# Admin password for Windows VM
+# Requirements: 12-123 characters, must include uppercase, lowercase, number
+admin_password = "ChangeMe123!SecurePassword"
+
+# SQL Server SA password
+# Requirements: 8+ characters, must include uppercase, lowercase, number, special char
+sql_sa_password = "ChangeMe123!SQLPassword"
+
+# IMPORTANT: Your public IP address for security
+# Get your IP: curl ifconfig.me
+# Format: ["YOUR.IP.ADDRESS/32"]
+allowed_ip_ranges = ["0.0.0.0/0"]  # ⚠️ WARNING: Change this to your IP!
+
+#==============================================================================
+# OPTIONAL VARIABLES - Customize if needed
+#==============================================================================
+
+# Project Configuration
+project_name = "sql-docker-demo"
+environment  = "dev"
+location     = "westus2"  # Options: eastus, westus2, northeurope, etc.
+
+# VM Sizes
+linux_vm_size   = "Standard_D8s_v3"  # 8 vCPU, 32 GB RAM - For SQL containers
+windows_vm_size = "Standard_D4s_v3"  # 4 vCPU, 16 GB RAM - For SSMS
+
+# Disk Sizes (GB)
+linux_disk_size_gb      = 512
+linux_data_disk_size_gb = 512  # Docker volumes
+windows_disk_size_gb    = 256
+windows_data_disk_size_gb = 512
+
+# SQL Server Configuration
+sql_server_edition = "Developer"  # Options: Developer, Express, Enterprise
+
+# Monitoring
+enable_prometheus = true
+enable_grafana    = true
+
+# Guacamole (Web-based remote desktop)
+guacamole_admin_password = "ChangeMe123!GuacPassword"
+
+# Cost Optimization - Auto-shutdown VMs
+auto_shutdown_enabled  = true
+auto_shutdown_time     = "1900"  # 24-hour format (1900 = 7 PM)
+auto_shutdown_timezone = "Pacific Standard Time"
+
+# Feature Flags
+deploy_windows_native_sql     = true   # Install SQL on Windows VM (for comparison)
+deploy_windows_container_sql  = false  # Windows containers (not recommended)
+
+# Tags
+tags = {
+  Project     = "SQL-Docker-Demos"
+  ManagedBy   = "Terraform"
+  Environment = "Demo"
+  Owner       = "YourName"
+  CostCenter  = "Engineering"
+}
+
+#==============================================================================
+# COST OPTIMIZATION EXAMPLES
+#==============================================================================
+
+# For testing/learning (smaller VMs):
+# linux_vm_size   = "Standard_D4s_v3"  # 4 vCPU, 16 GB RAM (~$140/mo)
+# windows_vm_size = "Standard_D2s_v3"  # 2 vCPU, 8 GB RAM (~$108/mo)
+
+# For demos (performance):
+# linux_vm_size   = "Standard_D16s_v3"  # 16 vCPU, 64 GB RAM (for AG demos)
+# windows_vm_size = "Standard_D4s_v3"   # 4 vCPU, 16 GB RAM
+
+# Skip Windows VM entirely (Linux only):
+# deploy_windows_native_sql = false
+
+#==============================================================================
+# NETWORK CONFIGURATION (Advanced)
+#==============================================================================
+
+# VNet Address Space
+vnet_address_space = ["10.0.0.0/16"]
+
+# Subnet Prefixes
+linux_subnet_prefix   = "10.0.1.0/24"
+windows_subnet_prefix = "10.0.2.0/24"
+
+# SSH Public Key (alternative to password auth for Linux)
+# ssh_public_key_path = "~/.ssh/id_rsa.pub"
+
