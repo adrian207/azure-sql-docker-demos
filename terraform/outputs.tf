@@ -94,7 +94,7 @@ output "connection_instructions" {
     🖥️ REMOTE DESKTOP (via Guacamole):
     -----------------------------------
     1. Open: http://${azurerm_public_ip.linux.ip_address}:8080/guacamole
-    2. Login: guacadmin / ${var.guacamole_admin_password}
+    2. Login: guacadmin / <guacamole_admin_password from tfvars>
     3. Connect to Windows VM via pre-configured RDP
     
     ⚡ NEXT STEPS:
