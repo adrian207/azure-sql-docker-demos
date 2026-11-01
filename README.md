@@ -101,6 +101,14 @@ This is a lab, not a production design.
 - `ansible/` and `monitoring/` contain only plans in their READMEs.
 - Secrets are passed to the VMs through cloud-init custom data and stored in the Terraform state. Keep the state private.
 
+## Related repositories
+
+These Azure labs overlap; pick by what you want to practise:
+
+- **[Azure-Free-Tier-Datacenter](https://github.com/adrian207/Azure-Free-Tier-Datacenter)**: a segmented multi-VM "datacenter" built with Azure CLI and Ansible on free-tier-sized VMs, reached through Guacamole
+- **[Azure-Win-Lab](https://github.com/adrian207/Azure-Win-Lab)**: Terraform for a Samba AD domain controller and server apps in Docker plus a Windows 11 workstation, reached through Azure Bastion
+- **azure-sql-docker-demos** (this repository): Terraform for SQL Server 2022 containers for log shipping, replication and availability groups, with Prometheus and Grafana
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
