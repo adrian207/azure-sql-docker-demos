@@ -87,7 +87,7 @@ output "connection_instructions" {
     --------------
     Grafana:     http://${azurerm_public_ip.linux.ip_address}:3000
     User:        admin
-    Password:    admin (change on first login)
+    Password:    <guacamole_admin_password from tfvars>
     
     Prometheus:  http://${azurerm_public_ip.linux.ip_address}:9090
     

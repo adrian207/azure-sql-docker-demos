@@ -131,7 +131,7 @@ write_files:
           ports:
             - "3000:3000"
           environment:
-            GF_SECURITY_ADMIN_PASSWORD: "admin"
+            GF_SECURITY_ADMIN_PASSWORD: ${jsonencode(replace(guacamole_admin_password, "$", "$$"))}
             GF_INSTALL_PLUGINS: "grafana-clock-panel"
           volumes:
             - grafana-data:/var/lib/grafana
@@ -213,6 +213,13 @@ write_files:
                 - 'sql-secondary:1433'
                 - 'sql-witness:1433'
 
+  # Admin password for Guacamole (guacadmin), from guacamole_admin_password in tfvars
+  - path: /opt/guacamole/admin-password
+    owner: root:root
+    permissions: '0600'
+    encoding: b64
+    content: ${base64encode(guacamole_admin_password)}
+
   # Guacamole database initialization script
   - path: /opt/guacamole/init-guacamole-db.sh
     owner: root:root
@@ -229,6 +236,19 @@ write_files:
       
       docker cp /tmp/initdb.sql guacamole-postgres:/tmp/initdb.sql
       docker exec guacamole-postgres psql -U guacamole_user -d guacamole_db -f /tmp/initdb.sql
+      
+      # Replace the built-in guacadmin/guacadmin login with the password from tfvars.
+      # Guacamole stores SHA-256(password + uppercase hex salt).
+      docker exec -i guacamole-postgres psql -v ON_ERROR_STOP=1 -U guacamole_user -d guacamole_db \
+        -v pw="$(cat /opt/guacamole/admin-password)" <<'SQL'
+      UPDATE guacamole_user u
+         SET password_salt = s.salt,
+             password_hash = sha256(convert_to(:'pw' || upper(encode(s.salt, 'hex')), 'UTF8')),
+             password_date = now()
+        FROM (SELECT decode(md5(random()::text) || md5(random()::text), 'hex') AS salt) s
+       WHERE u.entity_id = (SELECT entity_id FROM guacamole_entity WHERE name = 'guacadmin' AND type = 'USER');
+      SQL
+      shred -u /opt/guacamole/admin-password 2>/dev/null || rm -f /opt/guacamole/admin-password
       
       echo "Guacamole database initialized!"
 
@@ -307,7 +327,7 @@ write_files:
       
       echo "=== Environment setup complete! ==="
       echo "Access Guacamole: http://$(curl -s ifconfig.me):8080/guacamole"
-      echo "Default credentials: guacadmin / guacadmin"
+      echo "Sign in as guacadmin with guacamole_admin_password from terraform.tfvars"
 
 runcmd:
   # Enable and start Docker

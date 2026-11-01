@@ -149,7 +149,7 @@ variable "enable_grafana" {
 
 # Guacamole Configuration
 variable "guacamole_admin_password" {
-  description = "Guacamole admin password (REQUIRED - no default for security)"
+  description = "Password for the Guacamole guacadmin user and the Grafana admin user (required, no default)"
   type        = string
   sensitive   = true
   # NO DEFAULT - must be explicitly set
